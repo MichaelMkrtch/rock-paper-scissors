@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        // return random choice
+
+        let choices = ['Rock', 'Paper', 'Scissors'];
+
+        function computerPlay() {
+            let result = choices[Math.floor(Math.random() * choices.length)];
+            return result;
+        }
+
+        // play 1 round of R/P/S and returns string
+
+        let playerScore = 0;
+        let compScore = 0;
+
+        function playRound(playerChoice, computerChoice) {
+            let playerSelection = prompt("Rock, Paper, or Scissors?");
+
+            let computerSelection = computerPlay();
+
+            if (playerSelection.toLowerCase() === "Rock".toLowerCase()) {
+                if (computerSelection === "Scissors") {
+                    playerScore++
+                    return "You win! Rock beats Scissors.";
+                } else if (computerSelection === "Paper") {
+                    compScore++
+                    return "You lose! Paper beats Rock.";
+                } else {
+                    return "Tie!";
+                }
+
+            } else if (playerSelection.toLowerCase() === "Paper".toLowerCase()) {
+                if (computerSelection === "Rock") {
+                    playerScore++
+                    return "You win! Rock beats Paper.";
+                } else if (computerSelection ===  "Scissors") {
+                    compScore++
+                    return "You lose! Scissors beats Paper.";
+                } else {
+                    return "Tie!";
+                }
+
+            } else if (playerSelection.toLowerCase() === "Scissors".toLowerCase()) {
+                if (computerSelection === "Rock") {
+                    compScore++
+                    return "You lose! Rock beats Scissors.";
+                } else if (computerSelection === "Paper") {
+                    playerScore++
+                    return "You win! Scissors beats Paper.";
+                } else {
+                    return "Tie!";
+                }
+            } else {
+                return "Please choose between Rock, Paper, or Scissors.";
+            }
+        }
+
+        const playerChoice = "rock";
+        const computerChoice = computerPlay(); 
+
+        // 5 round game
+
+        function game() {
+            console.log(playRound(playerChoice, computerChoice));
+            console.log(playRound(playerChoice, computerChoice));
+            console.log(playRound(playerChoice, computerChoice));
+            console.log(playRound(playerChoice, computerChoice));
+            console.log(playRound(playerChoice, computerChoice));
+        }
+        
+        function showWinner() {
+            if (playerScore > compScore) {
+                return "You win the game!!";
+            } else if (playerScore < compScore) {
+                return "You lost the game to a computer...";
+            } else {
+                return "It's a draw!";
+            }
+        }
+            
+        game();
+        console.log(`You: ${playerScore}`);
+        console.log(`Computer: ${compScore}`);
+        console.log(showWinner());
+
+    </script>
+
+</body>
+</html>
